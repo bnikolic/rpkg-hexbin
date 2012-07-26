@@ -1,0 +1,43 @@
+Calling Tree { functions in order of ./hexbin.R }
+-------------
+
+hexbin
+ \--> .Fortran("hbin", *)
+
+hboxplot
+ |--> hcell2xy()
+ |--> hexpolygon()
+ \-----\-> hexcoords()
+
+hcell
+ \--> .Fortran("hcell", *)
+
+hcell2xy
+
+hdiffplot
+ \--> hcell2xy(), plot(), hexpolygon(), hexcoords()
+
+erode.hexbin
+ \--> .Fortran("herode", *)
+
+hexagons
+ \--> hcell2xy(), plot(), hexpolygon(), hexcoords(), polygon()
+
+hex.legend
+ \--> hexcoords(), hexpolygon()
+
+hmatplot
+ |--> hcell2xy()
+ |--> hboxplot
+ \--> hdiffplot  {2 x}
+
+plot.hexbin --> [ LinGraY() ]
+ |--> hex.legend()
+ |--> hexagons()
+
+
+smooth.hexbin
+ \--> .Fortran("hsm" , * )
+
+hray
+ \--> { polygon, lines }
